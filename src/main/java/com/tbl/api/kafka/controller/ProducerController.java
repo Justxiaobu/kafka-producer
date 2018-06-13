@@ -30,7 +30,7 @@ public class ProducerController {
      */
     @ApiOperation(value="kafka发送消息")
     @RequestMapping(value = "/producer/sendKafkaMsg",method = RequestMethod.POST)
-    public @ResponseBody ModelMap sendKafkaMsg(@ApiParam(value = "发送的数据",required = true)@RequestBody(required = true) String kafkaMsg,
+    public @ResponseBody ModelMap sendKafkaMsg(@ApiParam(value = "发送的数据",required = true)@RequestParam(required = true) String kafkaMsg,
                                                @ApiParam(value = "发送的主题",required = true)@RequestParam(value="主题",required = true) String topic){
         //记录日志，一小时一个日志文件
         logger.info("接口接收的主题："+topic+",接口接收的数据："+kafkaMsg);
