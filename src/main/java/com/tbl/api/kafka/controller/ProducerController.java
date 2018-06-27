@@ -30,17 +30,17 @@ public class ProducerController {
     private ProducerService producerService;
     /**
      * kafka发送消息接口
-     * @param kafkaMsg
+     * @param message
      * @return
      */
     @ApiOperation(value="kafka发送消息")
     @RequestMapping(value = "/producer/sendKafkaMsg",method = RequestMethod.POST)
-    public @ResponseBody ModelMap sendKafkaMsg(@ApiParam(value = "发送的数据",required = true)@RequestParam(required = true) String kafkaMsg,
-                                               @ApiParam(value = "发送的主题",required = true)@RequestParam(value="主题",required = true) String topic){
+    public @ResponseBody ModelMap sendKafkaMsg(@ApiParam(value = "主题",required = true)@RequestParam(required = true) String topic,
+                                               @ApiParam(value = "消息",required = true)@RequestParam(required = true) String message){
         //记录日志，一小时一个日志文件
-        LOGGER.info("接口接收的主题："+topic+",接口接收的数据："+kafkaMsg);
+        LOGGER.info("接口接收的主题："+topic+",接口接收的数据："+message);
         ModelMap modelMap = new ModelMap();
-        modelMap.addAllAttributes(producerService.sendKafkaMsg(topic,kafkaMsg));
+//        modelMap.addAllAttributes(producerService.sendKafkaMsg(topic,message));
         return modelMap;
 
     }
