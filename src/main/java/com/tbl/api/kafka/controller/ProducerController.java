@@ -40,7 +40,7 @@ public class ProducerController {
         //记录日志，一小时一个日志文件
         LOGGER.info("接口接收的主题："+topic+",接口接收的数据："+message);
         ModelMap modelMap = new ModelMap();
-//        modelMap.addAllAttributes(producerService.sendKafkaMsg(topic,message));
+        modelMap.addAllAttributes(producerService.sendKafkaMsg(topic,message));
         return modelMap;
 
     }
